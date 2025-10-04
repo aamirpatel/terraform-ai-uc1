@@ -39,6 +39,11 @@ jobs:
     - name: Run AI Review Bot
       run: |
         python3 review_bot.py tfplan.json
+    
+    - name: Generate output.json
+      run: |
+        # Example command to generate output.json
+        echo '{}' > output.json
 
     - name: Comment on PR
       uses: marocchino/sticky-pull-request-comment@v2
