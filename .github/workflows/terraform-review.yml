@@ -5,7 +5,10 @@ on:
     paths:
       - '**/main.tf'
     types: [opened, synchronize]
-
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
   terraform-review:
     name: Run Terraform Plan and Review
