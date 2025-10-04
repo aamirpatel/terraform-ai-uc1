@@ -1,0 +1,44 @@
+name: Terraform Plan Review Bot
+
+on:
+  pull_request:
+    paths:
+      - '**/*.tf'
+      - '**/terraform.tfvars'
+      - '**/main.tf'
+    types: [opened, synchronize]
+
+jobs:
+  terraform-review:
+    name: Run Terraform Plan and Review
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.5.0
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan.out
+
+    - name: Convert Plan to JSON
+      run: terraform show -json tfplan.out > tfplan.json
+
+    - name: Run AI Review Bot
+      run: |
+        python3 review_bot.py tfplan.json
+
+    - name: Comment on PR
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        message: |
+          🚨 **Terraform Review Bot Findings**
+          - Risky changes detected.
+          - Suggested improvements posted by the bot.
