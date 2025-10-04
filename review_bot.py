@@ -1,6 +1,6 @@
 import json
 import sys
-
+import os
 
 if not os.path.exists('output.json'):
     print("output.json not found. Please ensure it is generated before running this script.")
