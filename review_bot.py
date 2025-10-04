@@ -1,6 +1,19 @@
 import json
 import sys
 
+import json
+
+# Assume data is the string to be parsed
+if data and data.strip():
+    try:
+        parsed = json.loads(data)
+    except json.JSONDecodeError as e:
+        print(f"JSON decode failed: {e}")
+        # handle error or exit
+else:
+    print("No data to parse")
+    # handle empty input case
+
 def analyze_plan(plan_file):
     with open(plan_file) as f:
         data = json.load(f)
