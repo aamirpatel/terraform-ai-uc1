@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '0 3 * * *'  # Runs daily at 3 AM UTC
 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
   drift-check:
     runs-on: ubuntu-latest
