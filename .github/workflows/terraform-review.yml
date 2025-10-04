@@ -35,7 +35,11 @@ jobs:
 
     - name: Convert Plan to JSON
       run: terraform show -json tfplan.out > tfplan.json
-
+    
+    - name: Generate Terraform outputs
+      run: |
+        terraform output -json > output.json
+        
     - name: Run AI Review Bot
       run: |
         python3 review_bot.py tfplan.json
@@ -45,9 +49,7 @@ jobs:
    #     # Example command to generate output.json
     #    echo '{}' > output.json
     
-    - name: Generate Terraform outputs
-      run: |
-        terraform output -json > output.json
+  
 
     - name: Comment on PR
       uses: marocchino/sticky-pull-request-comment@v2
