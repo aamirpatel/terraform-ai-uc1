@@ -40,10 +40,14 @@ jobs:
       run: |
         python3 review_bot.py tfplan.json
     
-    - name: Generate output.json
+ #   - name: Generate output.json
+  #    run: |
+   #     # Example command to generate output.json
+    #    echo '{}' > output.json
+    
+    - name: Generate Terraform outputs
       run: |
-        # Example command to generate output.json
-        echo '{}' > output.json
+        terraform output -json > output.json
 
     - name: Comment on PR
       uses: marocchino/sticky-pull-request-comment@v2
