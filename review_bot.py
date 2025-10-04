@@ -1,6 +1,14 @@
 import json
 import sys
 
+
+if not os.path.exists('output.json'):
+    print("output.json not found. Please ensure it is generated before running this script.")
+    sys.exit(1)
+
+with open('output.json') as f:
+    # existing logic
+
 # Assume data is the string to be parsed
 data = sys.stdin.read()
 with open('output.json') as f:
