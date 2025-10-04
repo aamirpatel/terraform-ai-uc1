@@ -8,9 +8,7 @@ if not os.path.exists('output.json'):
 
 with open('output.json') as f:
     # existing logic
-
-# Assume data is the string to be parsed
-data = sys.stdin.read()
+    data = sys.stdin.read()
 with open('output.json') as f:
     content = f.read().strip()
 try:
