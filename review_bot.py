@@ -1,13 +1,14 @@
 import json
 import sys
 
-import json
-
 # Assume data is the string to be parsed
 data = sys.stdin.read()
-if data and data.strip():
-    try:
-        parsed = json.loads(data)
+with open('output.json') as f:
+    content = f.read().strip()
+    if content:
+        data = json.loads(content)
+    else:
+        raise ValueError("output.json is empty, cannot parse JSON")
     except json.JSONDecodeError as e:
         print(f"JSON decode failed: {e}")
         # handle error or exit
