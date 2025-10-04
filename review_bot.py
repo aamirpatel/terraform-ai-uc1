@@ -4,6 +4,7 @@ import sys
 import json
 
 # Assume data is the string to be parsed
+data = sys.stdin.read()
 if data and data.strip():
     try:
         parsed = json.loads(data)
