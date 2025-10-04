@@ -5,6 +5,7 @@ import sys
 data = sys.stdin.read()
 with open('output.json') as f:
     content = f.read().strip()
+    try:
     if content:
         data = json.loads(content)
     else:
