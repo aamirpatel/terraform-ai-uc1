@@ -3,8 +3,6 @@ name: Terraform Plan Review Bot
 on:
   pull_request:
     paths:
-      - '**/*.tf'
-      - '**/terraform.tfvars'
       - '**/main.tf'
     types: [opened, synchronize]
 
