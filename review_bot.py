@@ -5,12 +5,12 @@ import sys
 data = sys.stdin.read()
 with open('output.json') as f:
     content = f.read().strip()
-    try:
+try:
     if content:
         data = json.loads(content)
     else:
         raise ValueError("output.json is empty, cannot parse JSON")
-    except json.JSONDecodeError as e:
+except json.JSONDecodeError as e:
         print(f"JSON decode failed: {e}")
         # handle error or exit
 else:
