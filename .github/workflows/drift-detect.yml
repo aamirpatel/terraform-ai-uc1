@@ -1,12 +1,12 @@
 name: Terraform Drift Detection
 
 on:
-  schedule:
-    - cron: '0 3 * * *'  # Runs daily at 3 AM UTC
+ # schedule:
+ #   - cron: '0 3 * * *'  # Runs daily at 3 AM UTC
 
-  push:
-    branches:
-      - main
+ # push:
+ #   branches:
+ #     - main
   workflow_dispatch:
 jobs:
   drift-check:
