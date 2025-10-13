@@ -17,4 +17,3 @@ with open(file_path, "r") as f:
         data = json.loads(content)
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON format: {e}")
-`
