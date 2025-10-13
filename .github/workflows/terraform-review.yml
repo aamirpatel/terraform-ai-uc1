@@ -29,34 +29,26 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-
-    - name: Terraform Plan 
+    - name: Terraform Plan
       run: terraform plan -out=tfplan.out
-      
-    - name: Terraform Plan print
-      run: cat tfplan.out
-      
+
     - name: Convert Plan to JSON
       run: terraform show -json tfplan.out > tfplan.json
 
-    - name: Terraform Plan json print
-      run: cat tfplan.json
-    
-    - name: Generate Terraform outputs
+    - name: Debug tfplan.json
       run: |
-        terraform output -json > output.json
+       echo "Contents of tfplan.json:"
+       cat tfplan.json
+
+    - name: Validate tfplan.json
+      run: |
+       if [ ! -s tfplan.json ]; then
+       echo "tfplan.json is empty or invalid"
         
     - name: Run AI Review Bot
       run: |
         python3 review_bot.py tfplan.json
     
- #   - name: Generate output.json
-  #    run: |
-   #     # Example command to generate output.json
-    #  #  echo '{}' > output.json
-    
-  
-
     - name: Comment on PR
       uses: marocchino/sticky-pull-request-comment@v2
       with:
