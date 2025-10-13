@@ -2,6 +2,17 @@ import json
 import sys
 import os
 
+
+with open('tfplan.json', 'r') as f:
+    content = f.read()
+    if not content.strip():
+        raise ValueError("tfplan.json is empty or invalid.")
+
+    data = json.loads(content)
+
+
+
+
 if not os.path.exists('output.json'):
     print("output.json not found. Please ensure it is generated before running this script.")
     sys.exit(1)
