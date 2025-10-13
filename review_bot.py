@@ -3,6 +3,14 @@ import os
 import sys
 
 def load_tfplan_json(file_path):
+    # Example: Check if the file is empty before parsing
+if [ ! -s output.json ]; then
+  echo "JSON output is empty. Terraform may have failed or produced no output."
+  exit 1
+fi
+jq . output.json
+
+    
     if not os.path.exists(file_path):
         print(f"Error: File '{file_path}' not found.")
         sys.exit(1)
