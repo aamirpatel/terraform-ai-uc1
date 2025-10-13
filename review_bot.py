@@ -7,21 +7,16 @@ if not os.path.exists('output.json'):
     sys.exit(1)
 
 with open('output.json') as f:
-    # existing logic
-    data = sys.stdin.read()
-with open('output.json') as f:
     content = f.read().strip()
+
 try:
     if content:
         data = json.loads(content)
     else:
         raise ValueError("output.json is empty, cannot parse JSON")
 except json.JSONDecodeError as e:
-        print(f"JSON decode failed: {e}")
-        # handle error or exit
-else:
-    print("No data to parse")
-    # handle empty input case
+    print(f"JSON decode failed: {e}")
+    sys.exit(1)  # Exit if JSON is invalid
 
 def analyze_plan(plan_file):
     with open(plan_file) as f:
