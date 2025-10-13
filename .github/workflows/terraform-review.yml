@@ -43,8 +43,8 @@ jobs:
     - name: Validate tfplan.json
       run: |
        if [ ! -s tfplan.json ]; then
-       echo "tfplan.json is empty or invalid"
-        
+        echo "tfplan.json is empty or invalid"
+       fi 
     - name: Run AI Review Bot
       run: |
         python3 review_bot.py tfplan.json
